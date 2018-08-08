@@ -17,6 +17,7 @@ const ReviewEntry = (props) => {
   };
 
   return (
+    {console.log(formatDate(props.rev[0].reviewDate))}
     <div id={styles.entryContainer}>
       <img src={props.rev[1].picture} id={styles.reviewAvatar} />
       <div id={styles.reviewName}>{props.rev[1].name}</div>
