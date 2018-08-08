@@ -3,6 +3,16 @@ mongoose.connect('mongodb://database/docker_test');
 
 const Schema = mongoose.Schema;
 
+//userId
+//name
+//picture
+//houseId
+//reviewTitle
+//reviewData
+//reviewText
+//all of rating
+
+
 const userSchema = new Schema ({
   userId: Number,
   name: String,
