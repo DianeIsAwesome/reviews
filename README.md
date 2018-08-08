@@ -46,6 +46,7 @@ To retrieve a data point, send a get request the above mentioned
 endpoint and the response body will be a JSON object shaped in the
 form of the following schema:
 
+```````````
 const reviewSchema = new Schema ({
   houseId: Number,
   reviewTitle: String,
@@ -58,11 +59,12 @@ const reviewSchema = new Schema ({
   group: Number,
   user: Number
 });
+`````````````
 
 To create a data point, send a post request to the above mentioned
 endpoint in the response body with a JSON object shaped in the form
 of the following schema:
-
+`````````````
 const reviewSchema = new Schema ({
   houseId: Number,
   reviewTitle: String,
@@ -75,7 +77,7 @@ const reviewSchema = new Schema ({
   group: Number,
   user: Number
 });
-
+`````````````
 To update a data point, send a put request to the above mentioned
 endpoint in the response body with a JSON object with the desired
 properties and the updated values.
