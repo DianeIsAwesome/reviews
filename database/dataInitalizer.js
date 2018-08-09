@@ -30,6 +30,7 @@ const months = [
 const years = [2016, 2017, 2018];
 
 const imageEndpoint = 'https://s3-us-west-1.amazonaws.com/fec-reviews/';
+
 for (let i = 0; i < 10000000; i++) {
   console.log(
     `${i},house${i},${imageEndpoint}/home_${(i % 5) +
