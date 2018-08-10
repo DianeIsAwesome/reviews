@@ -2,7 +2,6 @@ const faker = require('faker');
 
 //Column Names
 //houseId
-//name
 //picture
 //reviewTitle
 //reviewText
