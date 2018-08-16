@@ -30,3 +30,7 @@ public/bundle.js
 aws-keys.json
 
 *.csv
+.env
+benchmark.js
+newrelic.js
+dump.rdb

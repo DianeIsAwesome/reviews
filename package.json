@@ -13,7 +13,7 @@
     "build-dev": "webpack -d --watch",
     "build": "webpack --mode production && grunt s3",
     "server-dev": "nodemon server/index.js",
-    "start": "node database-population.js && node server/index.js"
+    "start": "node server/index.js"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>tests/setup.js",
@@ -27,14 +27,20 @@
     ]
   },
   "dependencies": {
+    "cluster": "^0.7.7",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.4",
+    "newrelic": "^4.8.0",
+    "os": "^0.1.1",
+    "pg": "^7.4.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
+    "redis": "^2.8.0",
+    "siege": "^0.2.0",
     "underscore": "^1.9.1"
   },
   "devDependencies": {

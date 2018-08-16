@@ -82,7 +82,7 @@ class App extends React.Component {
           {this.state.reviews.length && <ReviewList reviews={this.state.search ? this.state.matched : this.state.reviews} />}
         </div>
       </div>
-    );  
+    );
   }
 }
 
