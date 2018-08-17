@@ -9,20 +9,17 @@ const ReviewEntry = (props) => {
     let newDate;
     newDate = date.slice(0, date.indexOf('T'));
     newDate = newDate.split('-');
-    // console.log(newDate);
     let month = months[newDate[1] - 1];
-    // console.log(month);
     let finalString = `${month} ${newDate[0]}`;
     return finalString;
   };
 
   return (
-    {console.log(formatDate(props.rev[0].reviewDate))}
     <div id={styles.entryContainer}>
-      <img src={props.rev[1].picture} id={styles.reviewAvatar} />
-      <div id={styles.reviewName}>{props.rev[1].name}</div>
-      <div id={styles.reviewDate}>{formatDate(props.rev[0].reviewDate)}</div>
-      <div id={styles.reviewText}>{props.rev[0].reviewText}</div>
+      <img src='https://s3-us-west-1.amazonaws.com/fec-reviews/9.jpg' id={styles.reviewAvatar} />
+      <div id={styles.reviewName}>{props.review.housename}</div>
+      <div id={styles.reviewDate}>{props.review.reviewdate}</div>
+      <div id={styles.reviewText}>{props.review.reviewtext}</div>
       <div id={styles.reviewFlag}><img id={styles.flagIcon} src='https://s3-us-west-1.amazonaws.com/fec-reviews/flag.svg' /></div>
       <div id={styles.reviewBorder}></div>
     </div>

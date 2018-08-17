@@ -52,31 +52,29 @@ class App extends React.Component {
       url: `/reviews/${window.location.href.substr(window.location.href.indexOf('listing/') + 8)}`,
       type: 'GET',
       dataType: 'json',
-    }).done((reviews) => {
+    }).done((data) => {
+      console.log('here', typeof data);
       // separate aggregatedValues to send down to AggregatedReviews
-      const aggregatedValues = reviews[reviews.length - 1];
+      const aggregatedValues = data[data.length - 1];
       this.setState({aggregatedValues: aggregatedValues});
-      // remove aggregatedValues from reviews array
-      reviews.splice(-1, 1);
-      /* the shape of reviews is an array of tuples where the index 0 of the tuple is user info
-      and index 1 is the associated review info */
-      this.setState({reviews: reviews});
-      // record number of reviews
-      this.setState({numReviews: reviews.length});
+      // remove aggregatedValues from data array
+      this.setState({reviews: data});
+      this.setState({numReviews: data.length});
     }).fail(() => {
       console.log('reviews get request failed');
     });
   }
 
   render() {
+    console.log(this.state.reviews, 'inside reviews');
     // there are three distinct sections to the review component
     return (
       <div className={styles.reviews} id="Reviews">
         <div id={styles.searchSection}>
-          <Search numReviews={this.state.numReviews} ratings={this.state.aggregatedValues} searchSubmit={this.searchSubmit}/>
+          <Search numReviews={this.state.numReviews} ratings={this.state.reviews} searchSubmit={this.searchSubmit}/>
         </div>
         <div id={styles.aggregatedReviews}>
-          {this.state.search ? <Matched searched={this.state.searchedVal} handleClick={this.switchView} reviews={this.state.matched}/> : Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.aggregatedValues} />}
+          {this.state.search ? <Matched searched={this.state.searchedVal} handleClick={this.switchView} reviews={this.state.matched}/> : Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.reviews} />}
         </div>
         <div id={styles.reviewList}>
           {this.state.reviews.length && <ReviewList reviews={this.state.search ? this.state.matched : this.state.reviews} />}

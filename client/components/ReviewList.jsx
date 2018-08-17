@@ -10,8 +10,9 @@ class ReviewList extends React.Component {
     // console.log(this.props.reviews);
   }
   render() {
-    const reviewList = this.props.reviews.map((review, index) => {
-      return <ReviewEntry key={index.toString()} rev={review} />;
+    let reviews = this.props.reviews;
+    const reviewList = reviews.map((review, index) => {
+      return <ReviewEntry key={index.toString()} review={review} />;
     });
     const noItems = (<div><h1>No reviews were found.</h1></div>);
     return (

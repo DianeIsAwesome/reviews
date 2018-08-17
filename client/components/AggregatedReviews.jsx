@@ -34,27 +34,27 @@ const AggregatedReviews = (props) => {
     <div id={styles.aggregateContainer}>
       <div id={styles.accuracy}>Accuracy</div>
       <div id={styles.accuracyStars} className={styles.starSet}>
-        {renderStars(props.ratings.accuracy)}
+        {renderStars(4)}
       </div>
       <div id={styles.location}>Location</div>
       <div id={styles.locationStars} className={styles.starSet}>
-        {renderStars(props.ratings.location)}
+        {renderStars(3)}
       </div>
       <div id={styles.communication}>Communication</div>
       <div id={styles.communicationStars} className={styles.starSet}>
-        {renderStars(props.ratings.communication)}
+        {renderStars(5)}
       </div>
       <div id={styles.checkIn}>Check-in</div>
       <div id={styles.checkInStars} className={styles.starSet}>
-        {renderStars(props.ratings.checkIn)}
+        {renderStars(5)}
       </div>
       <div id={styles.cleanliness}>Cleanliness</div>
       <div id={styles.cleanlinessStars} className={styles.starSet}>
-        {renderStars(props.ratings.cleanliness)}
+        {renderStars(3)}
       </div>
       <div id={styles.value}>Value</div>
       <div id={styles.valueStars} className={styles.starSet}>
-        {renderStars(props.ratings.value)}
+        {renderStars(4)}
       </div>
     </div>
   );
