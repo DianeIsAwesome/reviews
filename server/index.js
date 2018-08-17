@@ -30,19 +30,10 @@ const redisAddress = process.env.REDIS;
 const redisClient = redis.createClient(redisAddress);
 
 app.get("/reviews/:listingId", (req, res) => {
-  // let data = {
-  //   overall: 0,
-  //   accuracy: 0,
-  //   location: 0,
-  //   communication: 0,
-  //   checkIn: 0,
-  //   cleanliness: 0,
-  //   value: 0
-  // };
   redisClient.get(`/reviews/${req.params.listingId}`, (err, results) => {
     if (results) {
-      console.log("Cache hit for " + req.params.listingId, results);
-      res.send(results.row);
+      console.log("Cache hit for " + req.params.listingId, results, typeof results);
+      res.send(results);
     } else {
       const query = `SELECT * FROM reviews WHERE id = ${req.params.listingId}`;
       client.query(query, (err, result) => {
@@ -56,21 +47,6 @@ app.get("/reviews/:listingId", (req, res) => {
     }
   });
 });
-//   models.reviews.getReviews(reviews => {
-//     // this sums the values for each categories
-//     for (let review of reviews) {
-//       for (let key in aggregateObject) {
-//         aggregateObject[key] = aggregateObject[key] + review[0].rating[key];
-//       }
-//     }
-//     // this section calculates average score for each category
-//     for (let key in aggregateObject) {
-//       aggregateObject[key] = aggregateObject[key] / reviews.length;
-//     }
-//     // the aggregateObject is added to the reviews array
-//     reviews.push(aggregateObject);
-//     res.send(reviews);
-//   }, req.params.listingId);
 
 app.post("/reviews/:listingId", (req, res) => {
   let aggregateObject = new Review(req.body);

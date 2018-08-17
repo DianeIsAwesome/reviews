@@ -10,7 +10,7 @@ class Search extends React.Component {
     this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }  
+  }
 
   // this function should be a utility function as it is duplicated in AggregatedReviews
   renderStars(rating) {
@@ -52,13 +52,14 @@ class Search extends React.Component {
   }
 
   render() {
+    console.log(this.props.ratings, 'inside stars');
     return (
       <div id={styles.searchContainer}>
         <div id={styles.reviewCount}>
           {this.props.numReviews} {(this.props.numReviews === 1) ? 'Review' : 'Reviews'}
         </div>
         <div id={styles.overallScore} className={styles.starSet}>
-          {this.renderStars(this.props.ratings.overall)}
+          {this.renderStars(4)}
         </div>
         <div id={styles.barContainer}>
           {/* highlight box is added so both icon and input are highlighted when input is in focus */}
