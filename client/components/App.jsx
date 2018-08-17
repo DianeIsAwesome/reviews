@@ -56,9 +56,9 @@ class App extends React.Component {
       console.log('here', typeof data);
       // separate aggregatedValues to send down to AggregatedReviews
       const aggregatedValues = data[data.length - 1];
+      this.setState({reviews: data});
       this.setState({aggregatedValues: aggregatedValues});
       // remove aggregatedValues from data array
-      this.setState({reviews: data});
       this.setState({numReviews: data.length});
     }).fail(() => {
       console.log('reviews get request failed');
@@ -71,7 +71,7 @@ class App extends React.Component {
     return (
       <div className={styles.reviews} id="Reviews">
         <div id={styles.searchSection}>
-          <Search numReviews={this.state.numReviews} ratings={this.state.reviews} searchSubmit={this.searchSubmit}/>
+          <Search ratings={this.state.reviews} numReviews={this.state.numReviews}  searchSubmit={this.searchSubmit}/>
         </div>
         <div id={styles.aggregatedReviews}>
           {this.state.search ? <Matched searched={this.state.searchedVal} handleClick={this.switchView} reviews={this.state.matched}/> : Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.reviews} />}
