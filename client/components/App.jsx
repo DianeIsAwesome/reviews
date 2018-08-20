@@ -22,17 +22,8 @@ class App extends React.Component {
 
   // possible highlight method https://stackoverflow.com/questions/8644428/how-to-highlight-text-using-javascript
   searchSubmit(searchVal) {
-    console.log(searchVal);
     let matchingReviews = [];
     for (let review of this.state.reviews) {
-      console.log(review);
-      // reviewTitle is not currently being rendered
-      // let reviewTitle = review[0].reviewTitle.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').split(' ');
-      // for (let word of reviewTitle) {
-      //   if (word === searchVal) {
-      //     matchingReviews.push(review);
-      //   }
-      // }
       let reviewText = review[0].reviewText.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').split(' ');
       for (let word of reviewText) {
         if (word.toLowerCase() === searchVal.toLowerCase()) {

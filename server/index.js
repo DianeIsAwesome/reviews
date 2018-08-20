@@ -20,9 +20,8 @@ app.use(bodyParser.json());
 app.use("/", express.static(`${__dirname}/../public`));
 app.use("/listing/:listingId", express.static(`/${__dirname}/../public`));
 
-pool.connect((err, client2) => {
+pool.connect((err) => {
   if (err) console.log(err, client2);
-  client = client2;
 });
 
 const redisAddress = process.env.REDIS;
@@ -36,7 +35,7 @@ app.get("/reviews/:listingId", (req, res) => {
       res.send(results);
     } else {
       const query = `SELECT * FROM reviews WHERE id = ${req.params.listingId}`;
-      client.query(query, (err, result) => {
+      pool.query(query, (err, result) => {
         if (err) {
           console.log(err, 'error in query');
         } else {
